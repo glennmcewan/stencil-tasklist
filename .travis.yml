@@ -3,7 +3,7 @@ node_js:
   - "10"
 
 before_script:
-  - sed -i "s/baseUrl: '\/'/baseUrl: 'stencil-tasklist\/'/" "${TRAVIS_BUILD_DIR}/stencil.config.ts"
+  - "sed -i \"s/baseUrl: '/'/baseUrl: 'stencil-tasklist/'/\" \"${TRAVIS_BUILD_DIR}/stencil.config.ts\""
 
 script:
   - npm run build
