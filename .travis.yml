@@ -5,3 +5,12 @@ node_js:
 script:
   - npm build
   - npm test
+
+deploy:
+  provider: pages
+  local-dir: www
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  committer-from-gh: true
+  on:
+    branch: master
