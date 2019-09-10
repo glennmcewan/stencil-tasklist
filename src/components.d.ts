@@ -10,10 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppHome {}
-  interface AppProfile {
-    'name': string;
-  }
   interface AppRoot {}
+  interface TaskApp {}
+  interface TaskList {}
 }
 
 declare global {
@@ -25,35 +24,42 @@ declare global {
     new (): HTMLAppHomeElement;
   };
 
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
-
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLTaskAppElement extends Components.TaskApp, HTMLStencilElement {}
+  var HTMLTaskAppElement: {
+    prototype: HTMLTaskAppElement;
+    new (): HTMLTaskAppElement;
+  };
+
+  interface HTMLTaskListElement extends Components.TaskList, HTMLStencilElement {}
+  var HTMLTaskListElement: {
+    prototype: HTMLTaskListElement;
+    new (): HTMLTaskListElement;
+  };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'task-app': HTMLTaskAppElement;
+    'task-list': HTMLTaskListElement;
   }
 }
 
 declare namespace LocalJSX {
   interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
-  interface AppProfile extends JSXBase.HTMLAttributes<HTMLAppProfileElement> {
-    'name'?: string;
-  }
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
+  interface TaskApp extends JSXBase.HTMLAttributes<HTMLTaskAppElement> {}
+  interface TaskList extends JSXBase.HTMLAttributes<HTMLTaskListElement> {}
 
   interface IntrinsicElements {
     'app-home': AppHome;
-    'app-profile': AppProfile;
     'app-root': AppRoot;
+    'task-app': TaskApp;
+    'task-list': TaskList;
   }
 }
 
