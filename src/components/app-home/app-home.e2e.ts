@@ -13,7 +13,7 @@ describe('app-home', () => {
     const page = await newE2EPage();
     await page.setContent('<app-home></app-home>');
 
-    const element = await page.find('ion-header ion-title');
+    const element = await page.find('app-home >>> h1');
     expect(element.textContent).toEqual('Simple Tasklist');
   });
 });

@@ -2,25 +2,22 @@
   "name": "stencil-tasklist",
   "private": true,
   "version": "0.0.1",
-  "description": "stencil-tasklist",
+  "description": "Stencil Tasklist",
   "license": "MIT",
-  "files": [
-    "dist/"
-  ],
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watch",
+    "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@ionic/core": "^4.9.0",
+    "@stencil/core": "^1.3.3",
+    "@stencil/router": "^1.0.1",
     "todomvc-app-css": "^2.2.0",
     "todomvc-common": "^1.0.5"
   },
   "devDependencies": {
-    "@stencil/core": "^1.3.3",
     "@types/jest": "24.0.18",
     "@types/puppeteer": "1.19.1",
     "jest": "24.8.0",
