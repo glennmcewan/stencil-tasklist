@@ -4,15 +4,21 @@ node_js:
 
 before_script:
   - |
-    sed -i "s/baseUrl: '\/'/baseUrl: 'stencil-tasklist\/'/" "${TRAVIS_BUILD_DIR}/stencil.config.ts"
+    sed -i "s|baseUrl: '/'|baseUrl: '/stencil-tasklist'|" "${TRAVIS_BUILD_DIR}/stencil.config.ts"
 
 script:
   - npm run build
   # - npm test
 
+before_deploy:
+  - |
+    sed -i "s|href=\"/|href=\"/stencil-tasklist/|g" "${TRAVIS_BUILD_DIR}/www/stencil-tasklist/index.html"
+  - |
+    sed -i "s|src=\"/|src=\"/stencil-tasklist/|g" "${TRAVIS_BUILD_DIR}/www/stencil-tasklist/index.html"
+
 deploy:
   provider: pages
-  local-dir: www
+  local-dir: www/stencil-tasklist
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   committer-from-gh: true
