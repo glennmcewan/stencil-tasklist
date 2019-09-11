@@ -9,7 +9,6 @@ export class AppHome {
   render() {
     return (
       <div class='app-home'>
-        <h1>Simple Tasklist</h1>
         <task-app></task-app>
       </div>
     );
