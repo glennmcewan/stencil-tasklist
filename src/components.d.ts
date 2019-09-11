@@ -6,13 +6,17 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  TaskItem,
+} from './models/task-item';
 
 export namespace Components {
   interface AppHome {}
   interface AppRoot {}
   interface TaskApp {}
-  interface TaskList {}
+  interface TaskList {
+    'items': TaskItem[];
+  }
 }
 
 declare global {
@@ -53,7 +57,9 @@ declare namespace LocalJSX {
   interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
   interface TaskApp extends JSXBase.HTMLAttributes<HTMLTaskAppElement> {}
-  interface TaskList extends JSXBase.HTMLAttributes<HTMLTaskListElement> {}
+  interface TaskList extends JSXBase.HTMLAttributes<HTMLTaskListElement> {
+    'items'?: TaskItem[];
+  }
 
   interface IntrinsicElements {
     'app-home': AppHome;

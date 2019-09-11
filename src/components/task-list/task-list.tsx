@@ -1,20 +1,26 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
+import { TaskItem } from "../../models/task-item";
 
 @Component({
   tag: 'task-list'
 })
 export class TaskList {
-  items = [
-    'Task 1',
-    'Task 2',
-  ];
+  @Prop() items: TaskItem[];
 
   render() {
     return (
-      <ul>
+      <ul class="todo-list">
         {
           this.items.map((item) => {
-            return <li>{item}</li>
+            return (
+              <li>
+                <div class="view">
+                  <input class="toggle" type="checkbox" />
+                  <label>{item.value}</label>
+                  <button class="destroy"></button>
+                </div>
+              </li>
+            );
           })
         }
       </ul>
