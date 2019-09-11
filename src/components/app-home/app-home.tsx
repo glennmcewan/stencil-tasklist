@@ -2,25 +2,17 @@ import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
-  styleUrl: 'app-home.css'
+  styleUrl: 'app-home.css',
+  shadow: true
 })
 export class AppHome {
 
   render() {
-    return [
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>Simple Tasklist</ion-title>
-        </ion-toolbar>
-      </ion-header>,
-
-      <ion-content class="ion-padding">
-        <p>
-          This is your tasklist.
-        </p>
-
+    return (
+      <div class='app-home'>
+        <h1>Simple Tasklist</h1>
         <task-app></task-app>
-      </ion-content>
-    ];
+      </div>
+    );
   }
 }
