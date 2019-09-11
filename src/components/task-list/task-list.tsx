@@ -32,7 +32,7 @@ export class TaskList {
             return (
               <li>
                 <div class="view">
-                  <input class="toggle" type="checkbox" id={item.id} checked={item.completed} onChange={() => this.handleCompleteToggle(item)} />
+                  <input class="toggle" type="checkbox" checked={item.completed} onChange={() => this.handleCompleteToggle(item)} />
                   <label>{item.value}</label>
                   <button class="destroy" onClick={() => this.deleteItem(item)}></button>
                 </div>
