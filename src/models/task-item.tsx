@@ -1,4 +1,4 @@
 export class TaskItem {
-  constructor(public value: string, public status) {
+  constructor(public value: string) {
   }
 }
