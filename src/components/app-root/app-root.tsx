@@ -14,11 +14,7 @@ export class AppRoot {
         </header>
 
         <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url='/' component='task-app' exact={true} />
-            </stencil-route-switch>
-          </stencil-router>
+          <task-app></task-app>
         </main>
       </div>
     );

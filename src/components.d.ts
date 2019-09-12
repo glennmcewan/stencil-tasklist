@@ -11,7 +11,6 @@ import {
 } from './models/task-item';
 
 export namespace Components {
-  interface AppHome {}
   interface AppRoot {}
   interface TaskApp {}
   interface TaskList {
@@ -21,12 +20,6 @@ export namespace Components {
 
 declare global {
 
-
-  interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
-  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
@@ -46,7 +39,6 @@ declare global {
     new (): HTMLTaskListElement;
   };
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
     'app-root': HTMLAppRootElement;
     'task-app': HTMLTaskAppElement;
     'task-list': HTMLTaskListElement;
@@ -54,7 +46,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
   interface TaskApp extends JSXBase.HTMLAttributes<HTMLTaskAppElement> {}
   interface TaskList extends JSXBase.HTMLAttributes<HTMLTaskListElement> {
@@ -65,7 +56,6 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'app-home': AppHome;
     'app-root': AppRoot;
     'task-app': TaskApp;
     'task-list': TaskList;
