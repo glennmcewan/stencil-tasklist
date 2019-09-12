@@ -11,7 +11,7 @@ export class AppRoot {
     return (
       <div>
         <header class="page-header">
-          <h1>Stencil App Starter</h1>
+          <h1>TodoMVC StencilJS Example</h1>
         </header>
 
         <main>
