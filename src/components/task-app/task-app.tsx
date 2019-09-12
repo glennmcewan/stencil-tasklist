@@ -3,7 +3,8 @@ import { TaskItem } from '../../models/task-item';
 import { TaskService } from '../../services/task-service';
 
 @Component({
-  tag: 'task-app'
+  tag: 'task-app',
+  styleUrl: 'task-app.css'
 })
 export class TaskApp {
   @State() taskList: TaskItem[];
