@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Listen } from '@stencil/core';
+import { Component, h, State, Listen } from '@stencil/core';
 import { TaskItem } from '../../models/task-item';
 import { TaskService } from '../../services/task-service';
 
@@ -6,22 +6,28 @@ import { TaskService } from '../../services/task-service';
   tag: 'task-app'
 })
 export class TaskApp {
-  @Prop() service: TaskService = new TaskService();
   @State() taskList: TaskItem[];
+  service: TaskService = new TaskService();
 
   componentWillLoad() {
     this.taskList = this.service.load();
   }
 
-  createItemFromInput(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
-      const input = event.target as HTMLInputElement;
-      let task = new TaskItem(input.value);
-
-      this.taskList = this.service.add(task);
-
-      input.value = '';
+  createItemFromInput(event: any) {
+    if (event.keyCode !== 13) {
+      return;
     }
+    const input = event.target as HTMLInputElement;
+
+    if (!input.value) {
+      return;
+    }
+
+    let task = new TaskItem(input.value);
+
+    this.taskList = this.service.add(task);
+
+    input.value = '';
   }
 
   @Listen('markDeletedEvent')

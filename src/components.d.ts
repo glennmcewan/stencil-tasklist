@@ -7,18 +7,13 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  TaskService,
-} from './services/task-service';
-import {
   TaskItem,
 } from './models/task-item';
 
 export namespace Components {
   interface AppHome {}
   interface AppRoot {}
-  interface TaskApp {
-    'service': TaskService;
-  }
+  interface TaskApp {}
   interface TaskList {
     'items': TaskItem[];
   }
@@ -61,9 +56,7 @@ declare global {
 declare namespace LocalJSX {
   interface AppHome extends JSXBase.HTMLAttributes<HTMLAppHomeElement> {}
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
-  interface TaskApp extends JSXBase.HTMLAttributes<HTMLTaskAppElement> {
-    'service'?: TaskService;
-  }
+  interface TaskApp extends JSXBase.HTMLAttributes<HTMLTaskAppElement> {}
   interface TaskList extends JSXBase.HTMLAttributes<HTMLTaskListElement> {
     'items'?: TaskItem[];
     'onMarkCompletedEvent'?: (event: CustomEvent<any>) => void;
