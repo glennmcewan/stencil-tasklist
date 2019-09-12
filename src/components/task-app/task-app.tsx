@@ -1,43 +1,68 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Listen } from '@stencil/core';
 import { TaskItem } from '../../models/task-item';
+import { TaskService } from '../../services/task-service';
 
 @Component({
-  tag: 'task-app'
+  tag: 'task-app',
+  styleUrl: 'task-app.css'
 })
 export class TaskApp {
   @State() taskList: TaskItem[];
+  service: TaskService = new TaskService();
 
   componentWillLoad() {
-    this.taskList = [];
+    this.taskList = this.service.load();
   }
 
-  onKeyUp(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
-      const input = event.target as HTMLInputElement;
-      let task = new TaskItem(input.value);
-
-      this.taskList = [...this.taskList, task];
-
-      input.value = '';
+  createItemFromInput(event: any) {
+    if (event.keyCode !== 13) {
+      return;
     }
+    const input = event.target as HTMLInputElement;
+
+    if (!input.value) {
+      return;
+    }
+
+    let task = new TaskItem(input.value);
+
+    this.taskList = this.service.add(task);
+
+    input.value = '';
+  }
+
+  @Listen('markDeletedEvent')
+  markItemDeleted(event: any) {
+    this.taskList = this.service.delete(event.detail);
+  }
+
+  @Listen('markCompletedEvent')
+  markItemCompleted(event: any) {
+    this.taskList = this.service.markCompleted(event.detail);
+  }
+
+  @Listen('markUncompletedEvent')
+  markItemUncompleted(event: any) {
+    this.taskList = this.service.markUncompleted(event.detail);
   }
 
   render() {
+    const taskCount = this.taskList.length;
     return (
       <section class="todoapp">
         <header class="header">
-          <h1>Todos</h1>
-          <input class="new-todo" placeholder="What's next on the list?" onKeyUp={(event: KeyboardEvent) => this.onKeyUp(event)} />
+          <h1>Your Tasklist</h1>
+          <input class="new-todo" placeholder="What's next on the list?" onKeyUp={(event: KeyboardEvent) => this.createItemFromInput(event)} />
         </header>
         {
-          this.taskList.length > 0 ?
+          taskCount > 0 ?
             <section class="main">
               <task-list items={this.taskList}></task-list>
             </section>
             : ''
         }
         <footer class="footer">
-          <span class="todo-count"><strong>{this.taskList.length}</strong> {this.taskList.length == 1 ? 'item' : 'items'} left</span>
+          <span class="todo-count"><strong>{taskCount}</strong> {taskCount === 1 ? 'item' : 'items'} left</span>
         </footer >
       </section>
     );

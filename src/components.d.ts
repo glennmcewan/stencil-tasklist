@@ -59,6 +59,9 @@ declare namespace LocalJSX {
   interface TaskApp extends JSXBase.HTMLAttributes<HTMLTaskAppElement> {}
   interface TaskList extends JSXBase.HTMLAttributes<HTMLTaskListElement> {
     'items'?: TaskItem[];
+    'onMarkCompletedEvent'?: (event: CustomEvent<any>) => void;
+    'onMarkDeletedEvent'?: (event: CustomEvent<any>) => void;
+    'onMarkUncompletedEvent'?: (event: CustomEvent<any>) => void;
   }
 
   interface IntrinsicElements {
